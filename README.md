@@ -8,7 +8,39 @@ Downloads/Azure_Project.pdf
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the Azure_Project.pdf file may be used to install only certain pieces of it, such as Filebeat.
 
-  - _TODO: Enter the playbook file._
+1-Lesson-Plans/Week-13-Elk-Stack-Project/Activities/Stu_Day_2/Resources/filebeat-playbook.yml
+ 
+ ---
+- name: installing and launching filebeat
+  hosts: TODO
+  become: yes
+  tasks:
+
+  - name: download filebeat deb
+    command: curl -L -O TODO
+ 
+  - name: install filebeat deb
+    command: dpkg -i TODO
+
+  - name: drop in filebeat.yml 
+    copy:
+      src: /etc/ansible/files/filebeat-config.yml
+      dest: TODO
+
+  - name: enable and configure system module
+    command: TODO
+
+  - name: setup filebeat
+    command: TODO
+
+  - name: start filebeat service
+    command: TODO
+
+  - name: enable service filebeat on boot
+    systemd:
+      name: TODO
+      enabled: yes
+
 
 This document contains the following details:
 - Description of the Topology
@@ -33,12 +65,13 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
-| Name     | Function | IP Address | Operating System |
-|----------|----------|------------|------------------|
-| Jump Box | Gateway  | 10.0.0.1   | Linux            |
-| Web-1    |          |            | Linux            |
-| Web-2    |          |            | Linux            |
-| Web-3    |          |            | Linux            |
+| Name                 | Function | IP Address | Operating System |
+|----------------------|----------|------------|------------------|
+| Jump-Box-Provisioner | Gateway  | 10.0.0.1   | Linux            |
+| Web-1                |          | 10.0.0.5   | Linux            |
+| Web-2                |          | 10.0.0.6   | Linux            |
+| Web-3                |          | 10.0.0.7   | Linux            |
+| ELK-Server           |          | 10.1.0.4.  | Linux            |          
 
 ### Access Policies
 
@@ -52,11 +85,13 @@ Machines within the network can only be accessed by _____.
 
 A summary of the access policies in place can be found in the table below.
 
-| Name     | Publicly Accessible | Allowed IP Addresses |
-|----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
+| Name                 | Publicly Accessible | Allowed IP Addresses |
+|----------------------|---------------------|----------------------|
+| Jump-Box-Provisioner | Yes                 | 10.0.0.1 10.0.0.2    |
+| Web-1                | No                  |                      |
+| Web-2                | No                  |                      |
+| Web-3                | No                  |
+| ELK-Server           | 
 
 ### Elk Configuration
 
@@ -74,10 +109,12 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- _TODO: List the IP addresses of the machines you are monitoring_
+- 10.0.0.1
+
 
 We have installed the following Beats on these machines:
-- _TODO: Specify which Beats you successfully installed_
+- Filebeats
+- Metricbeats
 
 These Beats allow us to collect the following information from each machine:
 - _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
