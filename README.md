@@ -4,13 +4,13 @@
 
 The files in this repository were used to configure the network depicted below.
 
-Downloads/Azure_Project.pdf
+https://github.com/niccihode/Bootcampbasics/blob/main/Diagrams/Azure_Project.pdf
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the Azure_Project.pdf file may be used to install only certain pieces of it, such as Filebeat.
 
 1-Lesson-Plans/Week-13-Elk-Stack-Project/Activities/Stu_Day_2/Resources/filebeat-playbook.yml
  
- ---
+---
 - name: installing and launching filebeat
   hosts: TODO
   become: yes
@@ -55,43 +55,47 @@ This document contains the following details:
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
-Load balancing ensures that the application will be highly _____, in addition to restricting access to the network.
-- _TODO: What aspect of security do load balancers protect? What is the advantage of a jump box?_
+Load balancing ensures that the application will be highly reliable, in addition to restricting access to the network.
+- The off-loading function of a load balancer defends a network against DDoS (Distributed Denial of Service) Attacks.
+- The Jump Box and load balancers are the only IP's exposed to the internet (public). When using a Jump Box our other Vitual Machines do not have to be exposed to the internet (public) which adds an additional layer of security. 
+
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
-- _TODO: What does Filebeat watch for?_
-- _TODO: What does Metricbeat record?_
+- Filebeat monitors specified log files and locations, collects these log events and forwards them to Elasticsearch or Logstash for indexing. 
+- Metricbeat takes the metrics and statistics it collects and ships them to a specified output such as Elasticsearch or Logstash. 
 
 The configuration details of each machine may be found below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
-| Name                 | Function | IP Address | Operating System |
-|----------------------|----------|------------|------------------|
-| Jump-Box-Provisioner | Gateway  | 10.0.0.1   | Linux            |
-| Web-1                |          | 10.0.0.5   | Linux            |
-| Web-2                |          | 10.0.0.6   | Linux            |
-| Web-3                |          | 10.0.0.7   | Linux            |
-| ELK-Server           |          | 10.1.0.4.  | Linux            |          
+| Name                 | Function   | IP Address | Operating System |
+|----------------------|------------|------------|------------------|
+| Jump-Box-Provisioner | Gateway    | 10.0.0.4   | Linux            |
+| Web-1                |            | 10.0.0.5   | Linux            |
+| Web-2                |            | 10.0.0.6   | Linux            |
+| Web-3                |            | 10.0.0.7   | Linux            |
+| ELK-Server           | Monitoring | 10.1.0.4   | Linux            |          
 
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the _____ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
+Only the Jump-Box-Provisioner machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+- IP address of my personal computer (VPN not used, IP cannot be shared)
+- ELK-Server (10.1.0.4)
 
-Machines within the network can only be accessed by _____.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+Machines within the network can only be accessed by SSH (Secure Shell).
+- The Jump-Box-Provisioner (10.0.0.4) was the only machine that had access to the ELK-Server VM.
 
 A summary of the access policies in place can be found in the table below.
 
 | Name                 | Publicly Accessible | Allowed IP Addresses |
 |----------------------|---------------------|----------------------|
-| Jump-Box-Provisioner | Yes                 | 10.0.0.1 10.0.0.2    |
-| Web-1                | No                  |                      |
-| Web-2                | No                  |                      |
-| Web-3                | No                  |
-| ELK-Server           | 
+| Jump-Box-Provisioner | Yes                 | Private* 10.1.0.4    |
+| Web-1                | No                  | 10.0.0.4 10.1.0.4    |
+| Web-2                | No                  | 10.0.0.4 10.1.0.4    |                     
+| Web-3                | No                  | 10.0.0.4 10.1.0.4    |
+| ELK-Server           | No                  | 10.0.0.4             |
+
+*VPN was not used and therefore IP cannot be disclosed.
 
 ### Elk Configuration
 
