@@ -10,37 +10,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
 
 1-Lesson-Plans/Week-13-Elk-Stack-Project/Activities/Stu_Day_2/Resources/filebeat-playbook.yml
  
----
-- name: installing and launching filebeat
-  hosts: TODO
-  become: yes
-  tasks:
-
-  - name: download filebeat deb
-    command: curl -L -O TODO
- 
-  - name: install filebeat deb
-    command: dpkg -i TODO
-
-  - name: drop in filebeat.yml 
-    copy:
-      src: /etc/ansible/files/filebeat-config.yml
-      dest: TODO
-
-  - name: enable and configure system module
-    command: TODO
-
-  - name: setup filebeat
-    command: TODO
-
-  - name: start filebeat service
-    command: TODO
-
-  - name: enable service filebeat on boot
-    systemd:
-      name: TODO
-      enabled: yes
-
+paste playbook!!!!!!!
 
 This document contains the following details:
 - Description of the Topology
@@ -60,7 +30,7 @@ Load balancing ensures that the application will be highly reliable, in addition
 - The Jump Box and load balancers are the only IP's exposed to the internet (public). When using a Jump Box our other Vitual Machines do not have to be exposed to the internet (public) which adds an additional layer of security. 
 
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system configuration.
 - Filebeat monitors specified log files and locations, collects these log events and forwards them to Elasticsearch or Logstash for indexing. 
 - Metricbeat takes the metrics and statistics it collects and ships them to a specified output such as Elasticsearch or Logstash. 
 
@@ -69,9 +39,9 @@ The configuration details of each machine may be found below.
 | Name                 | Function   | IP Address | Operating System |
 |----------------------|------------|------------|------------------|
 | Jump-Box-Provisioner | Gateway    | 10.0.0.4   | Linux            |
-| Web-1                |            | 10.0.0.5   | Linux            |
-| Web-2                |            | 10.0.0.6   | Linux            |
-| Web-3                |            | 10.0.0.7   | Linux            |
+| Web-1                | Web Server | 10.0.0.5   | Linux            |
+| Web-2                | Web server | 10.0.0.6   | Linux            |
+| Web-3                | Web server | 10.0.0.7   | Linux            |
 | ELK-Server           | Monitoring | 10.1.0.4   | Linux            |          
 
 ### Access Policies
@@ -99,13 +69,14 @@ A summary of the access policies in place can be found in the table below.
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because it ensures the provisioning scripts always run identically.
+- This eliminates variablity between configurations and eliminates human error.
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+- The Ansible apt module installs docker.io and python3-pip
+- The Ansible pip module installs docker.
+- The Ansible docker-container module installs the cyberxsecurity/dvwa container.
+- The systemd module ensures the docker service is restarted when the machine reboots.
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
@@ -113,15 +84,17 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- 10.0.0.1
-
+- 10.0.0.5
+- 10.0.0.6
+- 10.0.0.7
 
 We have installed the following Beats on these machines:
 - Filebeats
 - Metricbeats
 
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+- Filebeat allows us to collect log files and locations from the Virtual Machines.
+- Metricbeats periodically collects metrics from the operating system and services running on the Virtual Machine.
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
