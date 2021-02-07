@@ -91,10 +91,15 @@ setup.kibana:
 
 #-------------------------- Elasticsearch output ------------------------------
 output.elasticsearch:
-  # TODO: Change password from `changem` to the password you created
+  # Array of hosts to connect to.
   hosts: ["10.1.0.4:9200"]
   username: "elastic"
   password: "changeme"
+
+  # Optional protocol and basic auth credentials.
+  #protocol: "https"
+  #username: "elastic"
+  #password: "changeme"
 
 #----------------------------- Logstash output --------------------------------
 #output.logstash:
@@ -156,3 +161,4 @@ processors:
 
 # This allows to enable 6.7 migration aliases
 #migration.6_to_7.enabled: true
+
