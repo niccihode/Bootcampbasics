@@ -1,6 +1,6 @@
 **A Brief Introduction to Ansible**
 
-A Docker container running Ansible was downloaded on the Jump-Box_Provisioner VM.
+A Docker container running Ansible was downloaded on the Jump-Box-Provisioner VM.
 
 The Ansible container was used to connect to a new VM (ELK-Server).
 
