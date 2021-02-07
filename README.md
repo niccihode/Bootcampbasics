@@ -8,9 +8,7 @@ https://github.com/niccihode/Bootcampbasics/blob/main/Diagrams/Azure_Project.pdf
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the Azure_Project.pdf file may be used to install only certain pieces of it, such as Filebeat.
 
-1-Lesson-Plans/Week-13-Elk-Stack-Project/Activities/Stu_Day_2/Resources/filebeat-playbook.yml
- 
-paste playbook!!!!!!!
+https://github.com/niccihode/Bootcampbasics/blob/main/Ansible/filebeat-playbook.yml
 
 This document contains the following details:
 - Description of the Topology
