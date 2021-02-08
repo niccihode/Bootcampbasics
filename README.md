@@ -98,13 +98,25 @@ These Beats allow us to collect the following information from each machine:
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+- Copy the configuration file to your Ansible container by running:
+curl https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat > /etc/ansible/files/filebeat-config.yml
+- Update the configuration file to include the ELK server's IP address: nano filebeat-config.yml
+  - Scroll to line #1106 and replace the IP address with the IP address of your ELK machine.
+  - Scroll to line #1806 and replace the IP address with the IP address of your ELK machine.
+  - Save this file in  /etc/ansible/files/filebeat-config.yml
+  
+- Create another Ansible playbook that accomplishes the Linux filebeat installation instructions.
+- A copy of the Ansible playbook is available here: 
 
-_TODO: Answer the following questions to fill in the blanks:_
+
+- Run the playbook: ansible-playbook filebeat-playbook.yml
+_ Navigate to the Filebeat installation page on the ELK server GUI to check that the installation worked as expected.
+- If the ELK stack was successfully receiving logs, you would see:
+
+
+
+Additional Information:
 - _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
+- The config.yml file should be updated to make Ansible run the playbook on a specific machine. The ELK server is installed on the ELK VM and configuration is accomplished using the elk.yml playbook. Filebeat is installed on the VMs to be monitored and configured by editing the filebeatHow do I specify which machine to install the ELK server on versus which to install Filebeat on?_
+- Navigate to the following URL from your browser to make sure the ELK server is running: http://[your.VM.IP]:5601/app/kibana
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
