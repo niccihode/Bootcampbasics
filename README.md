@@ -99,11 +99,11 @@ In order to use the playbook, you will need to have an Ansible control node alre
 
 SSH into the control node and follow the steps below:
 - Copy the configuration file to your Ansible container by running:
-curl https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat > /etc/ansible/files/filebeat-config.yml
-- Update the configuration file to include the ELK server's IP address: nano filebeat-config.yml
+'curl https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat > /etc/ansible/files/filebeat-config.yml'
+- Update the configuration file to include the ELK server's IP address: 'nano filebeat-config.yml'
   - Scroll to line #1106 and replace the IP address with the IP address of your ELK machine.
   - Scroll to line #1806 and replace the IP address with the IP address of your ELK machine.
-  - Save this file in  /etc/ansible/files/filebeat-config.yml
+  - Save this file in  '/etc/ansible/files/filebeat-config.yml'
   
 - Create another Ansible playbook that accomplishes the Linux filebeat installation instructions.
 - Save the configuration file in a directory called files in your Ansible directory.
@@ -111,11 +111,11 @@ curl https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/r
 
 https://github.com/niccihode/Bootcampbasics/blob/main/Ansible/filebeat-playbook.yml
 
-- Run the playbook: ansible-playbook filebeat-playbook.yml
+- Run the playbook: 'ansible-playbook filebeat-playbook.yml'
 _ Navigate to the Filebeat installation page on the ELK server GUI to check that the installation worked as expected.
 - If the ELK stack was successfully receiving logs, you would see:
 
-https://github.com/niccihode/Bootcampbasics/blob/main/Diagrams/Filebeat_success.png
+![Filebeat sucess](Images/filebeat_sucess.png)
 
 Troubleshooting
 - Navigate to the following URL from your browser to make sure the ELK server is running: http://[your.VM.IP]:5601/app/kibana
