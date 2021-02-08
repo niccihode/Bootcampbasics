@@ -4,6 +4,8 @@
 
 The files in this repository were used to configure the network depicted below.
 
+
+
 https://github.com/niccihode/Bootcampbasics/blob/main/Diagrams/Azure_Project.pdf
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the Azure_Project.pdf file may be used to install only certain pieces of it, such as Filebeat.
@@ -28,7 +30,7 @@ Load balancing ensures that the application will be highly reliable, in addition
 - The Jump Box and load balancers are the only IP's exposed to the internet (public). When using a Jump Box our other Vitual Machines do not have to be exposed to the internet (public) which adds an additional layer of security. 
 
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system configuration.
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the data and system logs.
 - Filebeat monitors specified log files and locations, collects these log events and forwards them to Elasticsearch or Logstash for indexing. 
 - Metricbeat takes the metrics and statistics it collects and ships them to a specified output such as Elasticsearch or Logstash. 
 
@@ -109,7 +111,7 @@ curl https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/r
 - Save the configuration file in a directory called files in your Ansible directory.
 - A copy of the Ansible playbook is available here: 
 
-
+https://github.com/niccihode/Bootcampbasics/blob/main/Ansible/filebeat-playbook.yml
 
 - Run the playbook: ansible-playbook filebeat-playbook.yml
 _ Navigate to the Filebeat installation page on the ELK server GUI to check that the installation worked as expected.
