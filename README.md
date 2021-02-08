@@ -106,17 +106,17 @@ curl https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/r
   - Save this file in  /etc/ansible/files/filebeat-config.yml
   
 - Create another Ansible playbook that accomplishes the Linux filebeat installation instructions.
+- Save the configuration file in a directory called files in your Ansible directory.
 - A copy of the Ansible playbook is available here: 
+
 
 
 - Run the playbook: ansible-playbook filebeat-playbook.yml
 _ Navigate to the Filebeat installation page on the ELK server GUI to check that the installation worked as expected.
 - If the ELK stack was successfully receiving logs, you would see:
 
+https://github.com/niccihode/Bootcampbasics/blob/main/Diagrams/Filebeat_success.png
 
-
-Additional Information:
-- _Which file is the playbook? Where do you copy it?_
-- The config.yml file should be updated to make Ansible run the playbook on a specific machine. The ELK server is installed on the ELK VM and configuration is accomplished using the elk.yml playbook. Filebeat is installed on the VMs to be monitored and configured by editing the filebeatHow do I specify which machine to install the ELK server on versus which to install Filebeat on?_
+Troubleshooting
 - Navigate to the following URL from your browser to make sure the ELK server is running: http://[your.VM.IP]:5601/app/kibana
 
