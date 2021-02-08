@@ -1,4 +1,4 @@
-**A Brief Introduction to Ansible**
+## **A Brief Introduction to Ansible**
 
 A Docker container running Ansible was downloaded on the Jump-Box-Provisioner VM.
 
@@ -6,7 +6,7 @@ The Ansible container was used to connect to a new VM (ELK-Server).
 
 Once connected to the ELK-Server, Ansible was used to install Filebeat and Metricbeat on the VM.
 
-**Why was Ansible used to install Filebeat and Metricbeat?**
+## **Why was Ansible used to install Filebeat and Metricbeat?**
 
 Infrasturcture as Code (IaC) is the concept of defining all of your equipment and network with code. When using virtual machines and containers, almost every server, database, workstation and other component in your infrastructure can be individually defined with code.
 
