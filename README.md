@@ -117,6 +117,10 @@ _ Navigate to the Filebeat installation page on the ELK server GUI to check that
 
 ![Filebeat sucess](Images/filebeat_sucess.png)
 
-Troubleshooting
+## Troubleshooting
 - Navigate to the following URL from your browser to make sure the ELK server is running: http://[your.VM.IP]:5601/app/kibana
+- Run the ansible-playbook again.
+- Make sure the configured security groups allows your IP (these have to be changed if your IP is dynamic).
+- Make sure the public IP of your Load balancer is static. 
+- Confirm the ELK Server Network Security group allows access through Port 5601.
 
